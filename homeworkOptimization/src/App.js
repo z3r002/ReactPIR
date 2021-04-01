@@ -8,13 +8,14 @@ const SimpleComponent = React.memo( ({ number, componentRerenderedTimes }) => {
     return <div onClick={() => onPress()}>Number: {number}</div>;
 });
 
+const arr = new Array(100000)
+    .fill({ number: 0 })
+    .map((item, index) => ({ number: item.number, id: String(index + 1) }))
 
 export const App = React.memo(() => {
     const componentRerenderedTimes = React.useRef(0);
     const [data, setData] = React.useState(
-        new Array(1000)
-            .fill({ number: 0 })
-            .map((item, index) => ({ number: item.number, id: String(index + 1) }))
+        arr
     );
 
 
